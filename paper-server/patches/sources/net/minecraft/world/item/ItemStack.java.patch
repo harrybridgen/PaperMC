@@ -23,6 +23,15 @@
                  }
              }
          };
+@@ -204,7 +_,7 @@
+             public ItemStack decode(final RegistryFriendlyByteBuf input) {
+                 ItemStack itemStack = codec.decode(input);
+                 if (!itemStack.isEmpty()) {
+-                    RegistryOps<Unit> ops = input.registryAccess().createSerializationContext(NullOps.INSTANCE);
++                    RegistryOps<io.papermc.paper.util.CountingOps.Value> ops = input.registryAccess().createSerializationContext(io.papermc.paper.util.CountingOps.INSTANCE); // Paper - Track codec depth
+                     ItemStack.CODEC.encodeStart(ops, itemStack).getOrThrow(DecoderException::new);
+                 }
+ 
 @@ -368,10 +_,165 @@
              return InteractionResult.PASS;
          } else {
