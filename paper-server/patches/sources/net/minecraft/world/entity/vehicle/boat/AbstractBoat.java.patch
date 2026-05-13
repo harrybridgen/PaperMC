@@ -108,3 +108,13 @@
      }
  
      @Override
+@@ -717,6 +_,9 @@
+         this.lastYd = this.getDeltaMovement().y;
+         if (!this.isPassenger()) {
+             if (onGround) {
++                if (this.fallDistance > 0.0F) {
++                    onState.getBlock().fallOn(this.level(), onState, pos, this, this.fallDistance);
++                }
+                 this.resetFallDistance();
+             } else if (!this.level().getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && ya < 0.0) {
+                 this.fallDistance -= (float)ya;
