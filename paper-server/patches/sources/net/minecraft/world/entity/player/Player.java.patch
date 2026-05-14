@@ -96,7 +96,7 @@
              super.rideTick();
          }
      }
-@@ -684,10 +_,10 @@
+@@ -684,22 +_,31 @@
              if (this.isDeadOrDying()) {
                  return false;
              } else {
@@ -109,8 +109,17 @@
                      }
  
                      if (level.getDifficulty() == Difficulty.EASY) {
-@@ -699,7 +_,14 @@
+                         damage = Math.min(damage / 2.0F + 1.0F, damage);
                      }
+ 
+-                    if (level.getDifficulty() == Difficulty.HARD) {
+-                        damage = damage * 3.0F / 2.0F;
+-                    }
++                    // Paper start - Blothera - HARD difficulty uses NORMAL damage scaling
++                    // if (level.getDifficulty() == Difficulty.HARD) {
++                    //     damage = damage * 3.0F / 2.0F;
++                    // }
++                    // Paper end - Blothera - HARD difficulty uses NORMAL damage scaling
                  }
  
 -                return damage != 0.0F && super.hurtServer(level, source, damage);
